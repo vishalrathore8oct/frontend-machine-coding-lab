@@ -95,7 +95,7 @@ npm run new <new-project-slug>
 
 ---
 
-### Manual Alternative (3 Steps)
+### Manual Alternative (4 Steps)
 
 If you prefer to set up a project manually:
 
@@ -123,7 +123,15 @@ const projects = [
 ]
 ```
 
-The application's home, projects, filtering, and routing systems will automatically load, route, and render the new component dynamically. ✅
+#### 4. Register Lazy Loading in UI
+Add a lazy loading reference to your interactive preview inside [ProjectDetail.jsx](/src/pages/ProjectDetail.jsx):
+```javascript
+const projectComponents = {
+  '<new-project-slug>': lazy(() => import('@projects/<new-project-slug>/index')), // ← add here
+}
+```
+
+The application's home, projects, filtering, and routing systems will automatically load, route, and render the new component. ✅
 
 ---
 
