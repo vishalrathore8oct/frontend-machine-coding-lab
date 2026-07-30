@@ -1,0 +1,265 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Light mode (Premium Warm Light Theme) */
+:root {
+  --bg: #fafaf9; /* Warm off-white background */
+  --bg-surface: #ffffff; /* Pure white container surface */
+  --bg-card: #ffffff; /* Pure white card base for elevation pop */
+  --bg-card-hover: #ffffff;
+  --bg-input: #f4f4f5; /* Crisp neutral light grey background */
+  --border: #e4e4e7; /* Soft grey border */
+  --border-hover: #d4d4d8;
+  --border-subtle: #f4f4f5;
+  --text-1: #09090b; /* Deep rich near-black */
+  --text-2: #3f3f46; /* Charcoal grey for body readability */
+  --text-3: #71717a; /* Muted gray for captions/subtitles */
+  --color-accent: #4f46e5; /* Rich royal indigo-purple (less neon violet) */
+  --color-accent-light: #6366f1;
+}
+
+/* Dark mode */
+.dark {
+  --bg: #09090b;
+  --bg-surface: #0f0f12;
+  --bg-card: rgba(24, 24, 27, 0.6);
+  --bg-card-hover: rgba(24, 24, 27, 0.85);
+  --bg-input: rgba(24, 24, 27, 0.8);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.14);
+  --border-subtle: rgba(255, 255, 255, 0.04);
+  --text-1: #fafafa;
+  --text-2: #a1a1aa;
+  --text-3: #71717a;
+  --color-accent: #8b5cf6;
+  --color-accent-light: #a78bfa;
+}
+
+/* ─── Base Reset & Typography ────────────────────────────────────────────── */
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply font-sans;
+    background-color: var(--bg);
+    color: var(--text-1);
+    min-height: 100vh;
+  }
+
+  /* Hero glow — dark mode only */
+  .dark body {
+    background-image: radial-gradient(
+      ellipse 80% 50% at 50% -10%,
+      rgba(139, 92, 246, 0.12),
+      transparent
+    );
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #d4d4d8;
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #8b5cf6;
+  }
+  .dark ::-webkit-scrollbar-track {
+    background: #09090b;
+  }
+  .dark ::-webkit-scrollbar-thumb {
+    background: #3f3f46;
+  }
+
+  /* Selection */
+  ::selection {
+    background: rgba(139, 92, 246, 0.25);
+    color: #fafafa;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold tracking-tight;
+    color: var(--text-1);
+  }
+
+  code,
+  pre {
+    @apply font-mono;
+  }
+}
+
+/* ─── Component Utilities ────────────────────────────────────────────────── */
+@layer components {
+  /* Themed card surface — responds to dark/light mode */
+  .card-base {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    box-shadow:
+      0 4px 20px -2px rgba(9, 9, 11, 0.03),
+      0 2px 6px -1px rgba(9, 9, 11, 0.02);
+    transition:
+      border-color 0.2s ease,
+      background-color 0.2s ease,
+      box-shadow 0.2s ease,
+      transform 0.2s ease;
+  }
+  .card-base:hover {
+    background-color: var(--bg-card-hover);
+    border-color: var(--border-hover);
+    box-shadow:
+      0 12px 30px -4px rgba(9, 9, 11, 0.07),
+      0 4px 12px -2px rgba(9, 9, 11, 0.03);
+    transform: translateY(-2px);
+  }
+
+  .dark .card-base {
+    box-shadow: none;
+  }
+  .dark .card-base:hover {
+    box-shadow: 0 12px 30px -4px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+  }
+
+  /* Legacy glass card */
+  .card-glass {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    @apply backdrop-blur-sm rounded-2xl;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-violet-400 via-purple-400 to-pink-400 bg-clip-text text-transparent;
+  }
+
+  /* Grid dot pattern — adapts to mode */
+  .bg-grid {
+    background-size: 32px 32px;
+  }
+  .bg-grid {
+    background-image: radial-gradient(
+      circle,
+      rgba(0, 0, 0, 0.1) 1px,
+      transparent 1px
+    );
+  }
+  .dark .bg-grid {
+    background-image: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 1px
+    );
+  }
+
+  /* Section container */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Focus ring */
+  .focus-ring {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500
+           focus-visible:ring-offset-2;
+    --tw-ring-offset-color: var(--bg);
+  }
+
+  /* Tag pill — mode-aware */
+  .tag-pill {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium;
+    background-color: var(--bg-input);
+    color: var(--text-2);
+    border: 1px solid var(--border);
+  }
+
+  /* Inline code */
+  .inline-code {
+    @apply px-1.5 py-0.5 rounded-md text-[0.82em] font-mono;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border);
+    color: var(--color-accent-light);
+  }
+
+  /* Themed text helpers */
+  .t-text-1 {
+    color: var(--text-1);
+  }
+  .t-text-2 {
+    color: var(--text-2);
+  }
+  .t-text-3 {
+    color: var(--text-3);
+  }
+
+  /* Themed border */
+  .t-border {
+    border-color: var(--border);
+  }
+}
+
+/* ─── Animations ─────────────────────────────────────────────────────────── */
+@layer utilities {
+  .animate-delay-100 {
+    animation-delay: 100ms;
+  }
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animate-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animate-delay-400 {
+    animation-delay: 400ms;
+  }
+  .animate-delay-500 {
+    animation-delay: 500ms;
+  }
+  .animate-delay-600 {
+    animation-delay: 600ms;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Bg from CSS var — for components that can't use @apply */
+  .bg-themed-card {
+    background-color: var(--bg-card);
+  }
+  .bg-themed-input {
+    background-color: var(--bg-input);
+  }
+  .bg-themed-surface {
+    background-color: var(--bg-surface);
+  }
+  .border-themed {
+    border-color: var(--border);
+  }
+  .border-themed-hover:hover {
+    border-color: var(--border-hover);
+  }
+}
