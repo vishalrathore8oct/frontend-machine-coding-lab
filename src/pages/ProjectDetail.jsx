@@ -17,6 +17,7 @@ import { Link, Navigate, useParams } from "react-router-dom";
 
 const projectComponents = {
   // '<new-project-slug>': lazy(() => import('@projects/<new-project-slug>/index')),
+  Counter: lazy(() => import("@projects/Counter/index")),
   // Add new project lazy imports here ↑
 };
 
