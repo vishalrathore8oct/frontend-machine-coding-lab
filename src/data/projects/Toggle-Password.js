@@ -11,7 +11,7 @@ const template = {
   technologies: ["React", "TailwindCSS"],
 
   github:
-    "https://github.com/vishalrathore8oct/frontend-machine-coding-lab/tree/main/src/projects/Toggle-Password", // ← original github project repo url
+    "https://github.com/vishalrathore8oct/frontend-machine-coding-lab/tree/main/src/projects/Toggle-Password/index.jsx", // ← original github project repo url
 
   namasteDev: "https://namastedev.com/practice/toggle-password", // ← original challenge URL
 
