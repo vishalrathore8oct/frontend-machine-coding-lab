@@ -19,6 +19,7 @@ const projectComponents = {
   // '<new-project-slug>': lazy(() => import('@projects/<new-project-slug>/index')),
   Counter: lazy(() => import("@projects/Counter/index")),
     'Toggle-Password': lazy(() => import('@projects/Toggle-Password/index')),
+    'Character-Counter': lazy(() => import('@projects/Character-Counter/index')),
   // Add new project lazy imports here ↑
 };
 
