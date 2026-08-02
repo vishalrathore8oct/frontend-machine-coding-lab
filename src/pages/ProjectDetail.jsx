@@ -20,6 +20,7 @@ const projectComponents = {
   Counter: lazy(() => import("@projects/Counter/index")),
     'Toggle-Password': lazy(() => import('@projects/Toggle-Password/index')),
     'Character-Counter': lazy(() => import('@projects/Character-Counter/index')),
+    'Progress-Bar': lazy(() => import('@projects/Progress-Bar/index')),
   // Add new project lazy imports here ↑
 };
 

@@ -2,6 +2,7 @@
 import counter from "./Counter";
 import togglePassword from './Toggle-Password'
 import characterCounter from './Character-Counter'
+import progressBar from './Progress-Bar'
 // Add new project lazy imports here ↑
 
 const projects = [
@@ -9,6 +10,7 @@ const projects = [
   counter,
   togglePassword,
   characterCounter,
+  progressBar,
   // Add more project here ↑
 ];
 
