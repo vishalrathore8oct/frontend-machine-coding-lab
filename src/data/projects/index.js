@@ -3,6 +3,7 @@ import counter from "./Counter";
 import togglePassword from './Toggle-Password'
 import characterCounter from './Character-Counter'
 import progressBar from './Progress-Bar'
+import darkMode from './Dark-Mode'
 // Add new project lazy imports here ↑
 
 const projects = [
@@ -11,6 +12,7 @@ const projects = [
   togglePassword,
   characterCounter,
   progressBar,
+  darkMode,
   // Add more project here ↑
 ];
 
